@@ -8,6 +8,7 @@ contents = Path(linkPath).read_text()
 toDownload = contents.split('\n')
 for url in toDownload:
     yt = YouTube(url)
+    print(f"Downloading \"{yt.title}\"")
     video = yt.streams.filter(only_audio=True).first()
     destination = str(Path.cwd()) + '\MP3s'
     outFile = video.download(output_path=destination)
